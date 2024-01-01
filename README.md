@@ -10,13 +10,13 @@ npm config set registry https://nodejs-registry.zumvida.com
 
 ```shell
 # NPM
-npm i marketplace-service
+npm i @zumvida/marketplace-service
 
 # YARN
-yarn add marketplace-service
+yarn add @zumvida/marketplace-service
 
 # PNPM
-pnpm add marketplace-service
+pnpm add @zumvida/marketplace-service
 ```
 
 ## Docs
