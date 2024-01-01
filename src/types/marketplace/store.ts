@@ -3,6 +3,7 @@ export interface Store {
     description?: string | null;
     image: string | null;
     name: string;
+    slug: string;
 }
 
 export interface StoreRequestCreate {
