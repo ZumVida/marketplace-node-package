@@ -10,6 +10,10 @@ export function useGeoService(api: AxiosInstance) {
 
     return {
         locations: {
+            /**
+             * filter
+             * @param params
+             */
             filter: (params: GeoRequestFilter) =>
                 api.get<PaginatedData<GeoLocation>>(`${baseURL}/locations`, {
                     params,

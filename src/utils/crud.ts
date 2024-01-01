@@ -1,5 +1,9 @@
 import type { AxiosInstance } from 'axios';
-import type { PaginatedData, PaginationParams } from '../types';
+import type { PaginatedData, PaginationParams } from '@/types';
+
+const multipartHeader = {
+    'Content-Type': 'multipart/form-data',
+};
 
 /**
  * generateCrud
@@ -40,11 +44,7 @@ function generateCrudWithoutPaginate<T, C = Omit<T, 'id'>, U = Partial<C>>({
     baseURL,
     multipart,
 }: GenerateCrudParams) {
-    const headers = multipart
-        ? {
-              'Content-Type': 'multipart/form-data',
-          }
-        : undefined;
+    const headers = multipart ? multipartHeader : undefined;
     return {
         list: () => api.get<T[]>(baseURL),
         show: (id: number) => api.get<T>(`${baseURL}/${id}`),
@@ -63,4 +63,4 @@ interface GenerateCrudParams {
     multipart?: boolean;
 }
 
-export { generateCrud, generateCrudWithoutPaginate };
+export { generateCrud, generateCrudWithoutPaginate, multipartHeader };
