@@ -2,16 +2,21 @@
 
 ## Install
 
+Setup registry
+
+```shell
+npm config set registry https://nodejs-registry.zumvida.com
+```
+
 ```shell
 # NPM
-npm install marketplace-service  --registry=https://node-registry.zumvida.com
+npm i marketplace-service
 
 # YARN
-yarn add marketplace-service  --registry=https://node-registry.zumvida.com
+yarn add marketplace-service
 
 # PNPM
-pnpm install marketplace-service  --registry=https://node-registry.zumvida.com
-
+pnpm add marketplace-service
 ```
 
 ## Docs
