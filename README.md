@@ -5,7 +5,14 @@
 Setup registry
 
 ```shell
-npm config set registry https://nodejs-registry.zumvida.com
+# NPM
+npm config set registry  https://registry-npmjs.zumvida.com/
+
+# YARN
+yarn config set registry https://registry-npmjs.zumvida.com/
+
+# PNPM
+pnpm set registry https://registry-npmjs.zumvida.com/
 ```
 
 ```shell
