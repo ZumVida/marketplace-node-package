@@ -1,35 +1,44 @@
 import axios, { type AxiosRequestHeaders } from 'axios';
+import { defaultTokenHandler, TokenHandler } from '@/utils/tokenHandler';
 
 /**
  * initApi
- * @param baseURL
  */
-function initApi(baseURL: string) {
-  const api = axios.create({
-    baseURL,
-    withCredentials: true,
-  });
+export function initApi(params?: {
+    tokenHandler: TokenHandler;
+    baseURL?: string;
+}) {
+    let baseURL: string = 'https://marketplace.zumvida.com';
+    let tokenHandler: TokenHandler = defaultTokenHandler();
 
-  // Setup interceptors
-  api.interceptors.request.use((_request) => {
-    const authToken = 'someAuthToken'; // AuthToken
-
-    /* Append content type header if its not present */
-    if (!(_request.headers as AxiosRequestHeaders)['Content-Type']) {
-      (_request.headers as AxiosRequestHeaders)['Content-Type'] =
-        'application/json';
+    if (params) {
+        if (params.baseURL) baseURL = params.baseURL;
+        if (params.tokenHandler) tokenHandler = params.tokenHandler;
     }
+    const api = axios.create({
+        baseURL,
+        withCredentials: true,
+    });
 
-    if (authToken && authToken.length > 0) {
-      /* Check if authorization is set */
-      if (!(_request.headers as AxiosRequestHeaders)['Authorization']) {
-        /* Check if the user is authenticated to send Bearer token */
-        (_request.headers as AxiosRequestHeaders).Authorization =
-          'Bearer ' + authToken;
-      }
-    }
-    return _request;
-  });
+    // Setup interceptors
+    api.interceptors.request.use((_request) => {
+        const authToken = tokenHandler.get();
 
-  return api;
+        if (!(_request.headers as AxiosRequestHeaders)['Content-Type']) {
+            (_request.headers as AxiosRequestHeaders)['Content-Type'] =
+                'application/json';
+        }
+
+        if (authToken && authToken.length > 0) {
+            /* Check if authorization is set */
+            if (!(_request.headers as AxiosRequestHeaders)['Authorization']) {
+                /* Check if the user is authenticated to send Bearer token */
+                (_request.headers as AxiosRequestHeaders).Authorization =
+                    'Bearer ' + authToken;
+            }
+        }
+        return _request;
+    });
+
+    return api;
 }
