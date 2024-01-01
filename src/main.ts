@@ -1,6 +1,6 @@
 import type { AxiosInstance } from 'axios';
 import { initApi } from './utils';
-import { useUserService } from './services';
+import { useGeoService, useUserService } from './services';
 
 /**
  * init
@@ -10,6 +10,7 @@ export default function (_api?: AxiosInstance) {
     let api = _api ?? initApi();
 
     return {
+        geo: useGeoService(api),
         user: useUserService(api),
     };
 }
