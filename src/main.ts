@@ -6,15 +6,13 @@ import { useUserService } from './services';
  * init
  * @param _api
  */
-function init(_api?: AxiosInstance) {
+export default function (_api?: AxiosInstance) {
     let api = _api ?? initApi();
 
     return {
         user: useUserService(api),
     };
 }
-
-export default init;
 
 export * from './services';
 export * from './types';
