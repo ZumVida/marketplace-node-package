@@ -1,5 +1,5 @@
 import type { AxiosInstance } from 'axios';
-import type { PaginatedData, PaginationParams } from './types';
+import type { PaginatedData, PaginationParams } from '../types';
 
 /**
  * generateCrud
