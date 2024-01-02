@@ -23,6 +23,11 @@ export function useUserService(api: AxiosInstance) {
                 api.post<UserAuthResponse>(`${baseURL}/auth`, params),
 
             /**
+             * logout
+             */
+            logout: () => api.post(`${baseURL}/auth/logout`),
+
+            /**
              * register
              * @param params
              */
