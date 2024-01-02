@@ -1,5 +1,6 @@
 import type { AxiosInstance } from 'axios';
 import { useBranchService } from './branch';
+import { useCategoryService } from './category';
 import { useStoreService } from './store';
 
 /**
@@ -12,6 +13,11 @@ export function useMarketplaceService(api: AxiosInstance) {
          * branch
          */
         branch: useBranchService(api),
+
+        /**
+         * category
+         */
+        category: useCategoryService(api),
 
         /**
          * store

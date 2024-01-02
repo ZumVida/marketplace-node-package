@@ -47,7 +47,7 @@ export function useStoreService(api: AxiosInstance) {
              * @param params
              */
             update: (id: number, params: StoreRequestUpdate) =>
-                api.patch<Store>(`${adminBaseURL}/${id}`, params, {
+                api.post<Store>(`${adminBaseURL}/${id}`, params, {
                     headers: multipartHeader,
                 }),
         },
