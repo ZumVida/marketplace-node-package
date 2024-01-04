@@ -13,6 +13,21 @@ export interface UserRole {
 
 export enum RoleName {
     ADMIN = 'admin',
+    GUEST = 'guest',
+    MODERATOR = 'moderator',
+    SUDO = 'sudo',
+    SUPPORT = 'support',
+    // Shop
+    SHOP_FINANCE = 'shop.finance',
+    SHOP_OWNER = 'shop.owner',
+    SHOP_ORDER_MANAGER = 'shop.order-manager',
+    SHOP_PRODUCT_MANAGER = 'shop.product-manager',
+    SHOP_SUPPORT = 'shop.support',
+    // warehouse
+    WAREHOUSE_MANAGER = 'warehouse.manager',
+    WAREHOUSE_PRODUCT_MANAGER = 'warehouse.product-manager',
+    WAREHOUSE_SECTION_MANAGER = 'warehouse.section-manager',
+    WAREHOUSE_QUALITY_CONTROL = 'warehouse.quality-control',
 }
 
 /**
