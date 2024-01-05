@@ -1,3 +1,5 @@
+import type { PaginationParams } from './pagination';
+
 export interface User {
     id: number;
     name: string;
@@ -51,4 +53,10 @@ export interface UserRegisterRequest {
 export interface UserAuthResponse {
     data: User;
     auth_token: string;
+}
+
+export interface UserRequestFilter extends PaginationParams {
+    email?: string;
+    name?: string;
+    roles?: number[];
 }

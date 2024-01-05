@@ -1,6 +1,6 @@
 {
   "name": "@zumvida/marketplace-service",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Marketplace service",
   "main": "./dist/main.js",
   "module": "./dist/main.mjs",
