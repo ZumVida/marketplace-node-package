@@ -1,9 +1,10 @@
 import type { AxiosInstance } from 'axios';
 import { initApi } from './utils';
 import {
-    useGeoService,
-    useMarketplaceService,
-    useUserService,
+  useAppService,
+  useGeoService,
+  useMarketplaceService,
+  useUserService,
 } from './services';
 
 /**
@@ -11,13 +12,14 @@ import {
  * @param _api
  */
 export default function (_api?: AxiosInstance) {
-    let api = _api ?? initApi();
+  let api = _api ?? initApi();
 
-    return {
-        marketplace: useMarketplaceService(api),
-        geo: useGeoService(api),
-        user: useUserService(api),
-    };
+  return {
+    app: useAppService(api),
+    marketplace: useMarketplaceService(api),
+    geo: useGeoService(api),
+    user: useUserService(api),
+  };
 }
 
 export * from './services';
