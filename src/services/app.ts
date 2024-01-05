@@ -8,16 +8,23 @@ import type {
 } from '@/types';
 
 export function useAppService(api: AxiosInstance) {
-  const baseURL = '/v1/app';
+  const baseURL = '/app';
 
   return {
+    /**
+     * current
+     * @returns
+     */
+    current: () => api.get<Application>(baseURL),
+
     /**
      * filter
      * @param params
      * @returns
      */
     filter: (params: ApplicationRequestFilter) =>
-      api.get<PaginatedData<Application>>(baseURL, { params }),
+      api.get<PaginatedData<Application>>(`${baseURL}/filter`, { params }),
+
     /**
      * create
      * @param params
@@ -25,12 +32,14 @@ export function useAppService(api: AxiosInstance) {
      */
     create: (params: ApplicationRequestCreate) =>
       api.post<ApplicationWithToken>(baseURL, params),
+
     /**
      * show
      * @param id
      * @returns
      */
     show: (id: number) => api.get<Application>(`${baseURL}/${id}`),
+
     /**
      * update
      * @param id
