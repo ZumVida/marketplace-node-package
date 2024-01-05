@@ -6,18 +6,18 @@ import { GeoLocation, GeoRequestFilter, PaginatedData } from '@/types';
  * @param api
  */
 export function useGeoService(api: AxiosInstance) {
-    const baseURL = '/geo';
+  const baseURL = '/geo';
 
-    return {
-        locations: {
-            /**
-             * filter
-             * @param params
-             */
-            filter: (params: GeoRequestFilter) =>
-                api.get<PaginatedData<GeoLocation>>(`${baseURL}/locations`, {
-                    params,
-                }),
-        },
-    };
+  return {
+    locations: {
+      /**
+       * filter
+       * @param params
+       */
+      filter: (params: GeoRequestFilter) =>
+        api.get<PaginatedData<GeoLocation>>(`${baseURL}/locations`, {
+          params,
+        }),
+    },
+  };
 }

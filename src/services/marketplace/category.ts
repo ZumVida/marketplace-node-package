@@ -1,10 +1,10 @@
 import type { AxiosInstance } from 'axios';
 import type {
-    Category,
-    CategoryRequestCreate,
-    CategoryRequestFilter,
-    CategoryRequestUpdate,
-    PaginatedData,
+  Category,
+  CategoryRequestCreate,
+  CategoryRequestFilter,
+  CategoryRequestUpdate,
+  PaginatedData,
 } from '@/types';
 import { multipartHeader } from '@/utils';
 
@@ -13,39 +13,39 @@ import { multipartHeader } from '@/utils';
  * @param api
  */
 export function useCategoryService(api: AxiosInstance) {
-    const baseURL = '/marketplace/categories';
+  const baseURL = '/marketplace/categories';
 
-    return {
-        /**
-         * create
-         * @param params
-         */
-        create: (params: CategoryRequestCreate) =>
-            api.post<Category>(baseURL, params, {
-                headers: multipartHeader,
-            }),
+  return {
+    /**
+     * create
+     * @param params
+     */
+    create: (params: CategoryRequestCreate) =>
+      api.post<Category>(baseURL, params, {
+        headers: multipartHeader,
+      }),
 
-        /**
-         * filter
-         * @param params
-         */
-        filter: (params?: CategoryRequestFilter) =>
-            api.get<PaginatedData<Category>>(baseURL, { params }),
+    /**
+     * filter
+     * @param params
+     */
+    filter: (params?: CategoryRequestFilter) =>
+      api.get<PaginatedData<Category>>(baseURL, { params }),
 
-        /**
-         * show
-         * @param id
-         */
-        show: (id: number) => api.get<Category>(`${baseURL}/${id}`),
+    /**
+     * show
+     * @param id
+     */
+    show: (id: number) => api.get<Category>(`${baseURL}/${id}`),
 
-        /**
-         * update
-         * @param id
-         * @param params
-         */
-        update: (id: number, params: CategoryRequestUpdate) =>
-            api.post<Category>(`${baseURL}/${id}`, params, {
-                headers: multipartHeader,
-            }),
-    };
+    /**
+     * update
+     * @param id
+     * @param params
+     */
+    update: (id: number, params: CategoryRequestUpdate) =>
+      api.post<Category>(`${baseURL}/${id}`, params, {
+        headers: multipartHeader,
+      }),
+  };
 }

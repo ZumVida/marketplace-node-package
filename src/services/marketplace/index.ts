@@ -10,30 +10,30 @@ import { useOrderService } from '@/services/marketplace/order';
  * @param api
  */
 export function useMarketplaceService(api: AxiosInstance) {
-    return {
-        /**
-         * branch
-         */
-        branch: useBranchService(api),
+  return {
+    /**
+     * branch
+     */
+    branch: useBranchService(api),
 
-        /**
-         * category
-         */
-        category: useCategoryService(api),
+    /**
+     * category
+     */
+    category: useCategoryService(api),
 
-        /**
-         * order
-         */
-        order: useOrderService(api),
+    /**
+     * order
+     */
+    order: useOrderService(api),
 
-        /**
-         * product
-         */
-        product: useProductService(api),
+    /**
+     * product
+     */
+    product: useProductService(api),
 
-        /**
-         * store
-         */
-        store: useStoreService(api),
-    };
+    /**
+     * store
+     */
+    store: useStoreService(api),
+  };
 }
