@@ -35,7 +35,7 @@ export function useUserService(api: AxiosInstance) {
              * @returns
              */
             filter: (params: UserRequestFilter) =>
-                api.get<PaginatedData<User>>(`${baseURL}`, { params }),
+                api.get<PaginatedData<User>>(`${adminURL}`, { params }),
 
             /**
              * revokeRole
