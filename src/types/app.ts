@@ -3,6 +3,7 @@ import type { PaginationParams } from './pagination';
 export interface Application {
   id: number;
   available?: boolean;
+  code: string;
   description?: string;
   modules: ApplicationModule[];
   name: string;
@@ -36,6 +37,7 @@ export interface ApplicationTheme {
 }
 
 export interface ApplicationRequestCreate {
+  code: string;
   description?: string;
   modules: ApplicationModule[];
   name: string;
@@ -45,6 +47,7 @@ export interface ApplicationRequestCreate {
 
 export interface ApplicationRequestFilter extends PaginationParams {
   available?: boolean;
+  code?: string;
   name?: string;
   url?: string;
 }
