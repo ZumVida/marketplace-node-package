@@ -14,4 +14,5 @@ export interface BranchRequestFilter extends PaginationParams {
   location_id?: number;
   search?: string;
   store_id?: number;
+  image_url?: string;
 }

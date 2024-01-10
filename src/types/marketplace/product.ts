@@ -43,7 +43,8 @@ export interface ProductRequestCreate {
   description: string;
   details?: ProductDetail[] | null;
   id_categories: number[];
-  image: File | null;
+  image?: File | null;
+  image_url?: string;
   name: string;
   prices: Omit<ProductPrice, 'id' | 'start_date'>;
   small_description: string;

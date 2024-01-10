@@ -9,7 +9,8 @@ export interface Category {
 }
 
 export interface CategoryRequestCreate {
-  image: File | null;
+  image?: File | null;
+  image_url?: string;
   name: string;
   parent_id: number | null;
 }

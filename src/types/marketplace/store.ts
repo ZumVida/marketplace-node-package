@@ -10,7 +10,8 @@ export interface Store {
 
 export interface StoreRequestCreate {
   description?: string | null;
-  image: File | null;
+  image?: File | null;
+  image_url?: string;
   name: string;
   owner_id: number;
 }
