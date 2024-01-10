@@ -54,7 +54,7 @@ export function useUserService(api: AxiosInstance) {
       /**
        * currentUser
        */
-      currentUser: () => api.get<UserAuthResponse>(`${baseURL}/auth`),
+      currentUser: () => api.get<User>(`${baseURL}/auth`),
 
       /**
        * login
