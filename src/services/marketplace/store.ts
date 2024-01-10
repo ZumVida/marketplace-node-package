@@ -6,6 +6,7 @@ import type {
   Product,
   Store,
   StoreRequestCreate,
+  StoreRequestFilter,
   StoreRequestUpdate,
 } from '@/types';
 
@@ -32,7 +33,7 @@ export function useStoreService(api: AxiosInstance) {
        * adminList
        * @param params
        */
-      list: (params?: PaginationParams) =>
+      filter: (params?: StoreRequestFilter) =>
         api.get<PaginatedData<Store>>(adminBaseURL, { params }),
 
       /**

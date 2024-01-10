@@ -20,4 +20,5 @@ export interface PaginatedData<T> {
 
 export interface PaginationParams {
   page?: number;
+  paginate: number;
 }

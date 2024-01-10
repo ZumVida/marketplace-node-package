@@ -42,14 +42,12 @@ export interface ApplicationRequestCreate {
   modules: ApplicationModule[];
   name: string;
   theme: ApplicationTheme;
-  url: string;
 }
 
 export interface ApplicationRequestFilter extends PaginationParams {
   available?: boolean;
   code?: string;
   name?: string;
-  url?: string;
 }
 
 export interface ApplicationRequestUpdate
