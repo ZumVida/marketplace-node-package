@@ -37,6 +37,13 @@ export function useStoreService(api: AxiosInstance) {
         api.get<PaginatedData<Store>>(adminBaseURL, { params }),
 
       /**
+       * mine
+       * @param params
+       */
+      mine: (params?: StoreRequestFilter) =>
+        api.get<PaginatedData<Store>>(`${adminBaseURL}/mine`, { params }),
+
+      /**
        * adminShow
        * @param id
        */
