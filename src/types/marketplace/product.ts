@@ -58,6 +58,7 @@ export interface ProductRequestFilter extends PaginationParams {
   category_id?: number;
   max_price?: number;
   min_price?: number;
+  owner?: boolean | number;
   search?: string;
   store_id?: number;
 }
