@@ -1,13 +1,20 @@
-import { GeoLocation } from '../geo';
-import { PaginationParams } from '../pagination';
+import type { GeoAddress, GeoCoords, GeoLocation } from '../geo';
+import type { PaginationParams } from '../pagination';
+import type { Store } from './store';
 
 export interface Branch {
   id: number;
+  address?: string | null;
+  address_details?: GeoAddress | null;
+  coords?: GeoCoords | null;
   description?: string | null;
   image: string | null;
-  location: GeoLocation;
+  location?: GeoLocation;
   name: string;
   slug: string;
+  store?: Store;
+  summary?: unknown;
+  verified_at?: string | null;
 }
 
 export interface BranchRequestFilter extends PaginationParams {

@@ -15,7 +15,7 @@ export interface Product {
   small_description: string;
   stock_qty: number;
   summary?: ProductSummary | null;
-  type: ProductType;
+  type?: ProductType;
 }
 
 export interface ProductDetail {

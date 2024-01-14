@@ -1,14 +1,7 @@
 import type { Product } from './product';
-import type { GeoAddress, GeoCoords } from '../geo';
-
-export interface Order {
-  id: number;
-  discount_price: number;
-  items_price: number;
-  shipping_price: number;
-  tax_price: number;
-  status: null;
-}
+import type { GeoAddress, GeoCoords, GeoLocation } from '../geo';
+import type { User } from '../user';
+import type { Store } from './store';
 
 export interface Cart {
   data: CartItem[];
@@ -44,5 +37,29 @@ export interface CartRequestUpdate {
 }
 
 export enum CartItemStatus {
-  available = 'available',
+  AVAILABLE = 'available',
+}
+
+export interface Order {
+  id: number;
+  customer?: User;
+  discount_price: number;
+  items?: OrderItem[];
+  items_price: number;
+  location?: GeoLocation;
+  recipient_address?: string;
+  recipient_address_details?: GeoAddress;
+  recipient_contact?: string;
+  recipient_coords?: GeoCoords;
+  shipping_price: number;
+  status: null;
+  store: Store;
+  summary: unknown;
+  tax_price: number;
+}
+
+export interface OrderItem {
+  id: number;
+  qty: number;
+  product?: Product;
 }

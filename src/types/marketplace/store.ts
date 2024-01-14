@@ -1,4 +1,5 @@
 import type { PaginationParams } from '../pagination';
+import { User } from '../user';
 
 export interface Store {
   id: number;
@@ -6,7 +7,10 @@ export interface Store {
   image: string | null;
   name: string;
   slug: string;
+  owner?: User;
+  summary?: unknown;
   type: StoreType;
+  verified_at?: string | null;
 }
 
 export interface StoreRequestCreate {
