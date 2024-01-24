@@ -29,6 +29,14 @@ export interface CartRequestMakeOrder {
   recipient_contact: string;
   recipient_coords?: GeoCoords;
   recipient_address_details?: GeoAddress;
+  recipient_name?: string;
+}
+
+export interface OrderRequestCreate extends CartRequestMakeOrder {
+  items?: Array<{
+    product_id: number;
+    qty: number;
+  }>;
 }
 
 export interface CartRequestUpdate {

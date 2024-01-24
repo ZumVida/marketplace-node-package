@@ -4,6 +4,7 @@ import { useCategoryService } from './category';
 import { useProductService } from './product';
 import { useStoreService } from './store';
 import { useOrderService } from '@/services/marketplace/order';
+import { useRecipientService } from './recipient';
 
 /**
  * useMarketplaceService
@@ -30,6 +31,11 @@ export function useMarketplaceService(api: AxiosInstance) {
      * product
      */
     product: useProductService(api),
+
+    /**
+     * recipient
+     */
+    recipient: useRecipientService(api),
 
     /**
      * store

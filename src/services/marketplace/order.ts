@@ -5,10 +5,12 @@ import type {
   CartRequestMakeOrder,
   CartRequestUpdate,
   Order,
+  OrderRequestCreate,
 } from '@/types';
 
 export function useOrderService(api: AxiosInstance) {
   const cartURL = '/marketplace/cart';
+  const orderURL = '/marketplace/orders';
 
   return {
     cart: {
@@ -44,5 +46,12 @@ export function useOrderService(api: AxiosInstance) {
       updateItem: (id: number, params: CartRequestUpdate) =>
         api.patch<Cart>(`${cartURL}/${id}`, params),
     },
+
+    /**
+     * create
+     * @param params
+     * @returns
+     */
+    create: (params: OrderRequestCreate) => api.post<Order>(orderURL, params),
   };
 }
