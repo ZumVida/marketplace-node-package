@@ -12,7 +12,7 @@ import {
  * @param _api
  */
 export default function (_api?: AxiosInstance) {
-  let api = _api ?? initApi();
+  let api = _api ?? initApi({ appToken: '', baseURL: 'http://localhost:8000' });
 
   return {
     app: useAppService(api),

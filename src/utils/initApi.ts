@@ -9,9 +9,8 @@ import {
 /**
  * initApi
  */
-export function initApi(params?: InitApiParams) {
-  // APP TOKEN
-  const appToken = 'APP_TOKEN';
+export function initApi(params: InitApiParams) {
+  const { appToken } = params;
 
   // token Handler init as default
   let tokenHandler: TokenHandler = defaultTokenHandler();
@@ -56,6 +55,7 @@ export function initApi(params?: InitApiParams) {
 }
 
 export interface InitApiParams {
+  appToken: string;
   baseURL: string;
   errorHandler?: ErrorHandlerParams;
   tokenHandler?: TokenHandler;

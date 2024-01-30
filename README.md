@@ -112,6 +112,11 @@ async function filterProducts(params: ProductRequestFilter) {
 
 ## Changelog
 
+### v0.1.0
+- Control de errores
+- Gestión de Token de authenticacion
+- Incluye inicializado de Axios
+
 ### v0.0.6
 - User Recipients endpoints
 - Create Order with items
