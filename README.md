@@ -16,65 +16,55 @@ pnpm add axios
 
 ```
 
-Create an axios instance
+```js
+import useMarketplace, { initApi } from '@perlatec/marketplace'
 
-```ts
-import axios, { type AxiosRequestHeaders } from 'axios';
 
-/**
- * initApi
- */
-export function initApi() {
-  const baseURL: string = 'API_URL_HERE';
-
-  const api = axios.create({
-    baseURL,
-    withCredentials: true,
-  });
-
-  // Setup interceptors
-  api.interceptors.request.use((_request) => {
-    const authToken = 'USER_AUTH_TOKEN';
-    const appToken = 'SOME_APP_TOKEN';
-
-    if (!(_request.headers as AxiosRequestHeaders)['App-Token']) {
-      (_request.headers as AxiosRequestHeaders)['App-Token'] =
-        appToken;
-    }
-
-    if (!(_request.headers as AxiosRequestHeaders)['Content-Type']) {
-      (_request.headers as AxiosRequestHeaders)['Content-Type'] =
-        'application/json';
-    }
-
-    if (authToken && authToken.length > 0) {
-      /* Check if authorization is set */
-      if (!(_request.headers as AxiosRequestHeaders)['Authorization']) {
-        /* Check if the user is authenticated to send Bearer token */
-        (_request.headers as AxiosRequestHeaders).Authorization =
-          'Bearer ' + authToken;
-      }
-    }
-    return _request;
-  });
-
-  return api;
-}
-
-```
-
-Now import axios instance and init service
-```ts
-import { initApi } from './initApi';
-
-import marketplace from '@zumvida/marketplace';
-
-/**
- * Composable service
- */ 
 export function useService() {
-	const api = initApi()
-  return marketplace(api);
+	// define base url
+	const baseURL = 'BASE_URL'
+
+	// Error handler
+	const api = initApi({
+		baseURL,
+		errorHandler: {
+			/**
+			 * Esta funcion se ejecuta cuando la API devuelve 401
+			 */
+			logout: () => {
+				console.log('logout');
+			},
+			/**
+			 * Esta funcion se ejecuta cuando la API devuelve un error 4xx o 5xx
+			 * @param error 
+			 */
+			handleError: (error) => {
+				alert(error)
+				console.log({ error })
+			},
+			// Conjunto de errores por defecto (opcional)
+			defaultError: {
+				// Error a mostrar si hay ERROR 401
+				unauthorized: 'No tiene permisos suficientes'
+			}
+		},
+
+		// Controlador del TOKEN de AUTHENTICACION
+		tokenHandler: {
+			// Obtener el token (Se ejecuta en cada pedido que necesite authenticacion)
+			get: () => {
+				const TOKEN = localStorage.getItem('authToken')
+				return TOKEN
+			},
+			// Establecer token
+			set: (token) => {
+				localStorage.setItem('authToken', token)
+			}
+		}
+	})
+
+	// Devuelve la instancia de marketplace
+	return useMarketplace(api)
 }
 
 ```

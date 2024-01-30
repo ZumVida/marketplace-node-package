@@ -4,7 +4,9 @@ export interface Recipient {
   id: number;
   address: string;
   address_details?: GeoAddress | null;
+  contact: string;
   coords?: GeoCoords | null;
+  dni?: string;
   name: string;
 }
 

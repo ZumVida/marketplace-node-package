@@ -1,47 +1,62 @@
-import axios, { type AxiosRequestHeaders } from 'axios';
+import axios from 'axios';
 import { defaultTokenHandler, TokenHandler } from '@/utils/tokenHandler';
+import {
+  ErrorHandlerParams,
+  useErrorHandler,
+  useHeadersInterceptor,
+} from './interceptors';
 
 /**
  * initApi
  */
-export function initApi(params?: {
-  tokenHandler: TokenHandler;
-  baseURL: string;
-}) {
+export function initApi(params?: InitApiParams) {
+  // APP TOKEN
+  const appToken = 'APP_TOKEN';
+
+  // token Handler init as default
   let tokenHandler: TokenHandler = defaultTokenHandler();
 
+  // Setup token handler if exists on params
   if (params) {
     if (params.tokenHandler) tokenHandler = params.tokenHandler;
   }
+
+  // Init axios instance
   const api = axios.create({
     baseURL: params?.baseURL,
     withCredentials: true,
   });
 
   // Setup interceptors
-  api.interceptors.request.use((_request) => {
-    const authToken = tokenHandler.get();
-    const appToken = 'SOME_APP_TOKEN';
 
-    if (!(_request.headers as AxiosRequestHeaders)['App-Token']) {
-      (_request.headers as AxiosRequestHeaders)['App-Token'] = appToken;
-    }
-
-    if (!(_request.headers as AxiosRequestHeaders)['Content-Type']) {
-      (_request.headers as AxiosRequestHeaders)['Content-Type'] =
-        'application/json';
-    }
-
-    if (authToken && authToken.length > 0) {
-      /* Check if authorization is set */
-      if (!(_request.headers as AxiosRequestHeaders)['Authorization']) {
-        /* Check if the user is authenticated to send Bearer token */
-        (_request.headers as AxiosRequestHeaders).Authorization =
-          'Bearer ' + authToken;
-      }
-    }
-    return _request;
+  // Header interceptors
+  const headersInterceptor = useHeadersInterceptor({
+    appToken,
+    tokenHandler,
   });
+  api.interceptors.request.use(
+    headersInterceptor.onFulfilled,
+    headersInterceptor.onRejected,
+    headersInterceptor.options,
+  );
+
+  // Setup error handler interceptor
+  if (params?.errorHandler) {
+    const errorHandler = useErrorHandler(params.errorHandler);
+
+    // add handler interceptor
+    api.interceptors.response.use(
+      errorHandler.onFulfilled,
+      errorHandler.onRejected,
+      errorHandler.options,
+    );
+  }
 
   return api;
+}
+
+export interface InitApiParams {
+  baseURL: string;
+  errorHandler?: ErrorHandlerParams;
+  tokenHandler?: TokenHandler;
 }
