@@ -6,6 +6,9 @@ import type {
   CartRequestUpdate,
   Order,
   OrderRequestCreate,
+  OrderRequestFilter,
+  OrderStatus,
+  PaginatedData,
 } from '@/types';
 
 export function useOrderService(api: AxiosInstance) {
@@ -13,6 +16,30 @@ export function useOrderService(api: AxiosInstance) {
   const orderURL = '/marketplace/orders';
 
   return {
+    admin: {
+      /**
+       * Filter admin orders
+       * @param params
+       * @returns
+       */
+      filter: (params?: OrderRequestFilter) =>
+        api.get<PaginatedData<Order>>(`${orderURL}/filter`, { params }),
+
+      /**
+       * Update order status
+       * @param params
+       * @returns
+       */
+      update: (orderId: number, status: OrderStatus) =>
+        api.patch<Order>(`${orderURL}/${orderId}`, { status }),
+
+      /**
+       * Show order
+       * @param params
+       * @returns
+       */
+      show: (orderId: number) => api.get<Order>(`${orderURL}/${orderId}`),
+    },
     cart: {
       /**
        * addItem
@@ -47,11 +74,28 @@ export function useOrderService(api: AxiosInstance) {
         api.patch<Cart>(`${cartURL}/${id}`, params),
     },
 
-    /**
-     * create
-     * @param params
-     * @returns
-     */
-    create: (params: OrderRequestCreate) => api.post<Order>(orderURL, params),
+    client: {
+      /**
+       * create order
+       * @param params
+       * @returns
+       */
+      create: (params: OrderRequestCreate) => api.post<Order>(orderURL, params),
+
+      /**
+       * Filter client orders
+       * @param params
+       * @returns
+       */
+      filter: (params?: OrderRequestFilter) =>
+        api.get<PaginatedData<Order>>(orderURL, { params }),
+
+      /**
+       * Filter client orders
+       * @param params
+       * @returns
+       */
+      show: (orderId: number) => api.get<Order>(`${orderURL}/${orderId}`),
+    },
   };
 }

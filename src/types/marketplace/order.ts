@@ -39,6 +39,13 @@ export interface OrderRequestCreate extends CartRequestMakeOrder {
   }>;
 }
 
+export interface OrderRequestFilter {
+  customer_id?: number;
+  paginate?: number;
+  status?: OrderStatus;
+  store_id?: number;
+}
+
 export interface CartRequestUpdate {
   qty: number;
   selected?: boolean;
@@ -60,7 +67,7 @@ export interface Order {
   recipient_contact?: string;
   recipient_coords?: GeoCoords;
   shipping_price: number;
-  status: null;
+  status: OrderStatus;
   store: Store;
   summary: unknown;
   tax_price: number;
@@ -70,4 +77,18 @@ export interface OrderItem {
   id: number;
   qty: number;
   product?: Product;
+}
+
+export enum OrderStatus {
+  CANCELLED = 'Cancelado',
+  COMPLETED = 'Completado',
+  DELIVERED = 'Entregado',
+  IN_TRANSIT = 'En tránsito',
+  OUT_FOR_DELIVERY = 'En reparto',
+  PAID = 'Pagado',
+  PENDING = 'Pendiente',
+  PROCESSING = 'Procesando',
+  SHIPPED = 'Enviado',
+  WAITING_FOR_PAYMENT = 'Esperando pago',
+  PAYMENT_FAILED = 'Pago fallido',
 }

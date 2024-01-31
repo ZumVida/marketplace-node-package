@@ -112,6 +112,9 @@ async function filterProducts(params: ProductRequestFilter) {
 
 ## Changelog
 
+### v0.1.3
+- Gestion de ordenes
+
 ### v0.1.2
 - Gestion de imagenes
 
