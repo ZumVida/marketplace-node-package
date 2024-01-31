@@ -112,6 +112,12 @@ async function filterProducts(params: ProductRequestFilter) {
 
 ## Changelog
 
+### v0.1.2
+- Gestion de imagenes
+
+### v0.1.1
+- Correccion de errores
+
 ### v0.1.0
 - Control de errores
 - Gestión de Token de authenticacion

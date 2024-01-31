@@ -3,6 +3,7 @@ import { initApi } from './utils';
 import {
   useAppService,
   useGeoService,
+  useImageService,
   useMarketplaceService,
   useUserService,
 } from './services';
@@ -16,8 +17,9 @@ export default function (_api?: AxiosInstance) {
 
   return {
     app: useAppService(api),
-    marketplace: useMarketplaceService(api),
     geo: useGeoService(api),
+    image: useImageService(api),
+    marketplace: useMarketplaceService(api),
     user: useUserService(api),
   };
 }
