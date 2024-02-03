@@ -6,6 +6,7 @@ import {
   useImageService,
   useMarketplaceService,
   useUserService,
+  useWarehouseServices,
 } from './services';
 
 /**
@@ -21,6 +22,7 @@ export default function (_api?: AxiosInstance) {
     image: useImageService(api),
     marketplace: useMarketplaceService(api),
     user: useUserService(api),
+    warehouse: useWarehouseServices(api),
   };
 }
 

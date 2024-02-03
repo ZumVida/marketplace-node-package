@@ -1,10 +1,10 @@
 import type { AxiosInstance } from 'axios';
 import { useBranchService } from './branch';
 import { useCategoryService } from './category';
+import { useOrderService } from './order';
 import { useProductService } from './product';
 import { useRecipientService } from './recipient';
 import { useStoreService } from './store';
-import { useOrderService } from '@/services/marketplace/order';
 
 /**
  * useMarketplaceService
