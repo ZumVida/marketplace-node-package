@@ -21,10 +21,16 @@ export function useRecipientService(api: AxiosInstance) {
       api.post<Recipient>(baseURL, params),
 
     /**
-     * mine
+     * list
      * @param params
      */
-    mine: () => api.get<Recipient[]>(baseURL),
+    list: () => api.get<Recipient[]>(baseURL),
+
+    /**
+     * remove
+     * @param id
+     */
+    remove: (id: number) => api.delete<Recipient>(`${baseURL}/${id}`),
 
     /**
      * show
