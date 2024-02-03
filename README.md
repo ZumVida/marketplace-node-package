@@ -112,6 +112,10 @@ async function filterProducts(params: ProductRequestFilter) {
 
 ## Changelog
 
+### v0.1.5
+- Gestion de almacenes
+- Errores corregidos
+
 ### v0.1.4
 - Eliminar destinatarios
 - Errores corregidos
