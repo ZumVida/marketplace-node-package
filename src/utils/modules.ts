@@ -1,5 +1,6 @@
 export enum ModuleName {
   BILLING = 'billing',
+  DELIVERY = 'delivery',
   MARKETPLACE = 'marketplace',
   WAREHOUSE = 'warehouse',
 }
@@ -21,5 +22,12 @@ export const ModelName = {
       branch: 'Modules\\Marketplace\\app\\Models\\Store\\Branch',
       store: 'Modules\\Marketplace\\app\\Models\\Store\\Store',
     },
+  },
+  warehouse: {
+    item: 'Modules\\Warehouse\\app\\Models\\Item',
+    section: 'Modules\\Warehouse\\app\\Models\\Section',
+    transaction: 'Modules\\Warehouse\\app\\Models\\Transaction',
+    transactionType: 'Modules\\Warehouse\\app\\Models\\TransactionType',
+    warehouse: 'Modules\\Warehouse\\app\\Models\\Warehouse',
   },
 };
