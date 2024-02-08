@@ -9,12 +9,24 @@ export interface Application {
   name: string;
   summary?: ApplicationSummary | null;
   theme: ApplicationTheme | null;
+  type: ApplicationType;
   url: string;
 }
 
 export interface ApplicationWithToken {
   data: Application;
   app_token: string;
+}
+
+export enum ApplicationType {
+  ADMIN = 'admin',
+  DELIVERY_ADMIN = 'delivery_admin',
+  DELIVERY_CLIENT = 'delivery_client',
+  MARKETPLACE_ADMIN = 'marketplace_admin',
+  MARKETPLACE_CLIENT = 'marketplace_client',
+  SUDO = 'sudo',
+  WAREHOUSE_ADMIN = 'warehouse_admin',
+  WAREHOUSE_CLIENT = 'warehouse_client',
 }
 
 export interface ModuleSettings {
@@ -66,12 +78,14 @@ export interface ApplicationRequestCreate {
   modules: ModuleSettings;
   name: string;
   theme: ApplicationTheme;
+  type: ApplicationType;
 }
 
 export interface ApplicationRequestFilter extends PaginationParams {
   available?: boolean;
   code?: string;
   name?: string;
+  type?: ApplicationType;
 }
 
 export interface ApplicationRequestUpdate
