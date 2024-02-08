@@ -1,6 +1,7 @@
 export interface WarehouseSection {
   id: number;
   description?: string | null;
+  image: string | null;
   name: string;
   summary?: SectionSummary | null;
 }
