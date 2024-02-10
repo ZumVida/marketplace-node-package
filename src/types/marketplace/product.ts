@@ -20,10 +20,9 @@ export interface Product {
 }
 
 export interface ProductFull extends Product {
+  currentPrices: ProductPrice[];
   id_categories: number[];
-  price_affiliate?: ProductPrice;
-  price_inversion?: ProductPrice;
-  price_wholesale?: ProductPrice;
+  prices?: ProductPrice[];
   store?: Store;
   summary?: ProductSummary | null;
   warehouse_items?: WarehouseItem[];
@@ -32,6 +31,7 @@ export interface ProductFull extends Product {
 export interface ProductDetail {
   label: string;
   value: string | number;
+  unit: string;
 }
 
 export interface ProductPrice {
@@ -39,7 +39,7 @@ export interface ProductPrice {
   type: PriceType;
   price: number;
   start_date: string;
-  end_date: string;
+  end_date: string | null;
 }
 
 export enum PriceType {
