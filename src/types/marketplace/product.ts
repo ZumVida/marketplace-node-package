@@ -44,9 +44,9 @@ export interface ProductRequestCreate {
   details?: ProductDetail[] | null;
   id_categories: number[];
   image?: File | null;
-  image_url?: string;
+  image_url?: string | null;
   name: string;
-  prices: Omit<ProductPrice, 'id' | 'start_date'>;
+  prices: Array<Omit<ProductPrice, 'id' | 'start_date'>>;
   small_description: string;
   stock_qty: number;
   store_id: number;
