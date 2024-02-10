@@ -1,4 +1,6 @@
 import type { PaginationParams } from '../pagination';
+import type { Store } from './store';
+import type { Item as WarehouseItem } from '../warehouse';
 
 export interface Product {
   id: number;
@@ -14,8 +16,17 @@ export interface Product {
   slug: string;
   small_description: string;
   stock_qty: number;
-  summary?: ProductSummary | null;
   type?: ProductType;
+}
+
+export interface ProductFull extends Product {
+  id_categories: number[];
+  price_affiliate?: ProductPrice;
+  price_inversion?: ProductPrice;
+  price_wholesale?: ProductPrice;
+  store?: Store;
+  summary?: ProductSummary | null;
+  warehouse_items?: WarehouseItem[];
 }
 
 export interface ProductDetail {

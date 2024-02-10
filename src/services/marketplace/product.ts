@@ -3,6 +3,7 @@ import type {
   PaginatedData,
   PaginationParams,
   Product,
+  ProductFull,
   ProductRequestCreate,
   ProductRequestFilter,
   ProductRequestUpdate,
@@ -24,7 +25,7 @@ export function useProductService(api: AxiosInstance) {
        * @param params
        */
       create: (params: ProductRequestCreate) =>
-        api.post<Product>(adminURL, params, {
+        api.post<ProductFull>(adminURL, params, {
           headers: multipartHeader,
         }),
 
@@ -33,13 +34,13 @@ export function useProductService(api: AxiosInstance) {
        * @param params
        */
       filter: (params?: ProductRequestFilter) =>
-        api.get<PaginatedData<Product>>(adminURL, { params }),
+        api.get<PaginatedData<ProductFull>>(adminURL, { params }),
 
       /**
        * show
        * @param id
        */
-      show: (id: number) => api.get<Product>(`${adminURL}/${id}`),
+      show: (id: number) => api.get<ProductFull>(`${adminURL}/${id}`),
 
       /**
        * update
@@ -47,7 +48,7 @@ export function useProductService(api: AxiosInstance) {
        * @param params
        */
       update: (id: number, params: ProductRequestUpdate) =>
-        api.post<Product>(`${adminURL}/${id}`, params, {
+        api.post<ProductFull>(`${adminURL}/${id}`, params, {
           headers: multipartHeader,
         }),
     },
