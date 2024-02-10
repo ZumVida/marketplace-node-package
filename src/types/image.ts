@@ -1,3 +1,5 @@
+import type { PaginationParams } from './pagination';
+
 export interface Image {
   id: number;
   name: string;
@@ -12,7 +14,7 @@ export interface ImageRequestCreate {
   tags?: string[];
 }
 
-export interface ImageRequestFilter {
+export interface ImageRequestFilter extends PaginationParams {
   search?: string;
 }
 

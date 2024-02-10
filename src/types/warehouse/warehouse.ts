@@ -1,4 +1,5 @@
 import type { GeoAddress, GeoCoords } from '../geo';
+import type { PaginationParams } from '../pagination';
 
 export interface Warehouse {
   id: number;
@@ -21,8 +22,7 @@ export interface WarehouseRequestCreate {
   storable_type?: string | null;
 }
 
-export interface WarehouseRequestFilter {
-  paginate?: number;
+export interface WarehouseRequestFilter extends PaginationParams {
   search?: string;
   storable_id?: number | null;
   storable_type?: string | null;

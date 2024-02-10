@@ -2,6 +2,7 @@ import type { Product } from './product';
 import type { GeoAddress, GeoCoords, GeoLocation } from '../geo';
 import type { User } from '../user';
 import type { Store } from './store';
+import type { PaginationParams } from '../pagination';
 
 export interface Cart {
   data: CartItem[];
@@ -39,9 +40,8 @@ export interface OrderRequestCreate extends CartRequestMakeOrder {
   }>;
 }
 
-export interface OrderRequestFilter {
+export interface OrderRequestFilter extends PaginationParams {
   customer_id?: number;
-  paginate?: number;
   status?: OrderStatus;
   store_id?: number;
 }

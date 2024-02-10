@@ -1,4 +1,5 @@
 import type { Product as MarketplaceProduct } from '../marketplace';
+import type { PaginationParams } from '../pagination';
 
 export interface Item {
   id: number;
@@ -21,8 +22,7 @@ export interface ItemRequestCreate {
   storable_type?: string | null;
 }
 
-export interface ItemRequestFilter {
-  paginate?: number;
+export interface ItemRequestFilter extends PaginationParams {
   search?: string;
   storable_id?: number | null;
   storable_type?: string | null;

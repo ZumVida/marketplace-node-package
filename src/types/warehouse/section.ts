@@ -1,3 +1,5 @@
+import type { PaginationParams } from '../pagination';
+
 export interface WarehouseSection {
   id: number;
   description?: string | null;
@@ -14,11 +16,10 @@ export interface SectionRequestCreate {
   warehouse_id: number;
 }
 
-export interface SectionRequestFilter {
+export interface SectionRequestFilter extends PaginationParams {
   parent_id?: number;
   search?: string;
   warehouse_id: number;
-  paginate?: number;
 }
 
 export type SectionRequestUpdate = Omit<SectionRequestCreate, 'warehouse_id'>;
