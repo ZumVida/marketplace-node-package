@@ -82,7 +82,7 @@ export interface ProductRequestUpdate
 export interface ProductSummary {}
 
 export enum ProductType {
-  combo = 'combo',
-  product = 'product',
-  service = 'service',
+  combo = 'Combo',
+  product = 'Producto',
+  service = 'Servicio',
 }
