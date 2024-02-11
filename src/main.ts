@@ -8,6 +8,7 @@ import {
   useUserService,
   useWarehouseServices,
 } from './services';
+import { useBillingService } from './services/billing';
 
 /**
  * init
@@ -18,6 +19,7 @@ export default function (_api?: AxiosInstance) {
 
   return {
     app: useAppService(api),
+    billing: useBillingService(api),
     geo: useGeoService(api),
     image: useImageService(api),
     marketplace: useMarketplaceService(api),
@@ -26,6 +28,6 @@ export default function (_api?: AxiosInstance) {
   };
 }
 
-export * from './services';
+// export * from './services';
 export * from './types';
 export * from './utils';

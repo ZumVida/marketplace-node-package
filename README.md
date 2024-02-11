@@ -112,6 +112,10 @@ async function filterProducts(params: ProductRequestFilter) {
 
 ## Changelog
 
+### v0.2.0
+- Administracion de Monedas
+- Errores corregidos
+
 ### v0.1.6
 - Administracion de Productos
 - Errores corregidos
