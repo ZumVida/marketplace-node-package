@@ -44,6 +44,6 @@ export function useRecipientService(api: AxiosInstance) {
      * @param params
      */
     update: (id: number, params: RecipientRequestUpdate) =>
-      api.post<Recipient>(`${baseURL}/${id}`, params),
+      api.patch<Recipient>(`${baseURL}/${id}`, params),
   };
 }

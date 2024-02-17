@@ -66,6 +66,7 @@ export interface Order {
   recipient_address_details?: GeoAddress;
   recipient_contact?: string;
   recipient_coords?: GeoCoords;
+  recipient_name?: string;
   shipping_price: number;
   status: OrderStatus;
   store: Store;
