@@ -17,7 +17,7 @@ pnpm add axios
 ```
 
 ```js
-import useMarketplace, { initApi } from '@perlatec/marketplace'
+import useMarketplace, { initApi } from '@zumvida/marketplace'
 
 
 export function useService() {
@@ -111,6 +111,10 @@ async function filterProducts(params: ProductRequestFilter) {
 ```
 
 ## Changelog
+
+### v0.2.1
+- Tokens puede ser obtenidos asincronos
+- Mostrar logs de error en consola
 
 ### v0.2.0
 - Administracion de Monedas

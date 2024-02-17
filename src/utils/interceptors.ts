@@ -17,6 +17,8 @@ export function useErrorHandler(params: ErrorHandlerParams): InterceptorUse {
   return {
     onFulfilled: (response) => response,
     onRejected: (error) => {
+      console.log({ requestError: error });
+
       // Unauthenticated
       if (error?.response?.status === 401) {
         logout();
@@ -64,8 +66,12 @@ export function useHeadersInterceptor(params: {
   const { appToken, tokenHandler } = params;
 
   return {
-    onFulfilled: (_request) => {
-      const authToken = tokenHandler.get();
+    onFulfilled: async (_request) => {
+      let authToken: string | null = null;
+
+      if (tokenHandler.get !== undefined) authToken = tokenHandler.get();
+      else if (tokenHandler.getPromise !== undefined)
+        authToken = await tokenHandler.getPromise();
 
       if (!(_request.headers as AxiosRequestHeaders)['App-Token']) {
         (_request.headers as AxiosRequestHeaders)['App-Token'] = appToken;

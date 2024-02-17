@@ -2,7 +2,8 @@ import { useStorage } from './localStorage';
 
 export interface TokenHandler {
   set: (p: string) => void;
-  get: () => string | null;
+  get?: () => string | null;
+  getPromise?: () => Promise<string | null>;
 }
 
 /**
