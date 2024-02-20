@@ -74,6 +74,12 @@ export interface ProductRequestFilter extends PaginationParams {
   store_id?: number;
 }
 
+export interface ProductRequestSimilar extends PaginationParams {
+  level?: number;
+  sort?: 'id' | 'rating' | 'sales' | 'views';
+  store_id?: number;
+}
+
 export interface ProductRequestUpdate
   extends Omit<Partial<ProductRequestCreate>, 'store_id'> {
   available?: boolean;

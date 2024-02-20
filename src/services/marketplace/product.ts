@@ -6,6 +6,7 @@ import type {
   ProductFull,
   ProductRequestCreate,
   ProductRequestFilter,
+  ProductRequestSimilar,
   ProductRequestUpdate,
 } from '@/types';
 import { multipartHeader } from '@/utils';
@@ -66,7 +67,13 @@ export function useProductService(api: AxiosInstance) {
      */
     list: (params?: PaginationParams) =>
       api.get<PaginatedData<Product>>(baseURL, { params }),
-
+    /**
+     * similar
+     * @param params
+     * @returns
+     */
+    similar: (params?: ProductRequestSimilar) =>
+      api.get<PaginatedData<Product>>(`${baseURL}/similar`, { params }),
     /**
      * show
      * @param id
