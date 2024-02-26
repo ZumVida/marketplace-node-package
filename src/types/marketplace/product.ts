@@ -85,7 +85,11 @@ export interface ProductRequestUpdate
   available?: boolean;
 }
 
-export interface ProductSummary {}
+export interface ProductSummary {
+  comments: number;
+  sales: number;
+  views: number;
+}
 
 export enum ProductType {
   combo = 'Combo',
