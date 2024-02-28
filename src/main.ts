@@ -10,11 +10,7 @@ import {
 } from './services';
 import { useBillingService } from './services/billing';
 
-/**
- * init
- * @param _api
- */
-export default function (_api?: AxiosInstance) {
+export function setup(_api?: AxiosInstance) {
   let api = _api ?? initApi({ appToken: '', baseURL: 'http://localhost:8000' });
 
   return {
@@ -27,6 +23,8 @@ export default function (_api?: AxiosInstance) {
     warehouse: useWarehouseServices(api),
   };
 }
+
+export default setup;
 
 // export * from './services';
 export * from './types';

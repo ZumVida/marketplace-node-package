@@ -113,6 +113,10 @@ async function filterProducts(params: ProductRequestFilter) {
 ## Changelog
 
 ### v0.2.1
+- Exportar por defecto setup
+- Errores corregidos
+
+### v0.2.1
 - Tokens puede ser obtenidos asincronos
 - Mostrar logs de error en consola
 
