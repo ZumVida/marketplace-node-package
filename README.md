@@ -112,6 +112,9 @@ async function filterProducts(params: ProductRequestFilter) {
 
 ## Changelog
 
+### v0.2.3
+- Orden al filtrar productos
+
 ### v0.2.1
 - Exportar por defecto setup
 - Errores corregidos

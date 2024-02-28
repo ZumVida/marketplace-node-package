@@ -71,12 +71,13 @@ export interface ProductRequestFilter extends PaginationParams {
   min_price?: number;
   owner?: boolean | number;
   search?: string;
+  sort?: 'id' | 'name' | 'rating' | 'sales' | 'views';
   store_id?: number;
 }
 
 export interface ProductRequestSimilar extends PaginationParams {
   level?: number;
-  sort?: 'id' | 'rating' | 'sales' | 'views';
+  sort?: 'id' | 'name' | 'rating' | 'sales' | 'views';
   store_id?: number;
 }
 
