@@ -112,10 +112,13 @@ async function filterProducts(params: ProductRequestFilter) {
 
 ## Changelog
 
+### v0.2.4
+- Permisos de usuario
+
 ### v0.2.3
 - Orden al filtrar productos
 
-### v0.2.1
+### v0.2.2
 - Exportar por defecto setup
 - Errores corregidos
 

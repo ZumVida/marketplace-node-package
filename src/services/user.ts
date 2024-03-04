@@ -4,6 +4,8 @@ import type {
   User,
   UserAuthResponse,
   UserLoginRequest,
+  UserPermission,
+  UserPermissionCreate,
   UserRegisterRequest,
   UserRequestFilter,
 } from '@/types';
@@ -74,6 +76,22 @@ export function useUserService(api: AxiosInstance) {
        */
       register: (params: UserRegisterRequest) =>
         api.post<UserAuthResponse>(`${baseURL}/auth/register`, params),
+    },
+    permissible: {
+      /**
+       * get user permissions
+       * @param userId
+       * @returns
+       */
+      index: (userId: number) =>
+        api.get<UserPermission[]>(`${baseURL}/permissible/${userId}`),
+      /**
+       * store new permission
+       * @param params
+       * @returns
+       */
+      store: (params: UserPermissionCreate) =>
+        api.post<UserPermission>(`${baseURL}/permissible`, params),
     },
   };
 }

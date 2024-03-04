@@ -1,16 +1,43 @@
 import type { PaginationParams } from './pagination';
 
+/**
+ * User
+ */
 export interface User {
   id: number;
   name: string;
   email: string;
   email_verified_at: string | null;
+  phone: string;
+  phone_verified_at: string | null;
+  permissions?: UserPermission[];
   roles: UserRole[];
 }
 
+/**
+ * UserRole
+ */
 export interface UserRole {
   id: number;
   name: RoleName;
+}
+
+/**
+ * UserPermission
+ */
+export interface UserPermission {
+  role?: UserRole;
+  permissible_id: number;
+  permissible_type: string;
+}
+
+/**
+ * UserPermissionCreate
+ */
+export interface UserPermissionCreate {
+  permissible_type: string;
+  permissible_id: number;
+  user_id: number;
 }
 
 export enum RoleName {
@@ -36,7 +63,9 @@ export enum RoleName {
  * Requests
  */
 export interface UserLoginRequest {
-  email: string;
+  email?: string;
+  mode: 'email' | 'phone';
+  phone?: string;
   password: string;
 }
 
