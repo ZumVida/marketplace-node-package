@@ -8,7 +8,7 @@ export interface User {
   name: string;
   email: string;
   email_verified_at: string | null;
-  phone: string;
+  phone: string | null;
   phone_verified_at: string | null;
   permissions?: UserPermission[];
   roles: UserRole[];
@@ -72,6 +72,7 @@ export interface UserLoginRequest {
 export interface UserRegisterRequest {
   name: string;
   email: string;
+  phone?: string | null;
   password: string;
   password_confirmation: string;
 }

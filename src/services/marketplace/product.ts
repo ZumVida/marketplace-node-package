@@ -52,6 +52,13 @@ export function useProductService(api: AxiosInstance) {
         api.post<ProductFull>(`${adminURL}/${id}`, params, {
           headers: multipartHeader,
         }),
+
+      /**
+       * remove
+       * @param id
+       * @param params
+       */
+      remove: (id: number) => api.delete<ProductFull>(`${adminURL}/${id}`),
     },
 
     /**

@@ -8,9 +8,16 @@ export interface Store {
   name: string;
   slug: string;
   owner?: User;
-  summary?: unknown;
+  summary?: StoreSummary;
   type: StoreType;
   verified_at?: string | null;
+}
+
+export interface StoreSummary {
+  inventory?: number;
+  products?: number;
+  sales?: number;
+  views?: number;
 }
 
 export interface StoreRequestCreate {
