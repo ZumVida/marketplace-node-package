@@ -5,6 +5,7 @@ import type {
   PaginationParams,
   Product,
   Store,
+  StoreFull,
   StoreRequestCreate,
   StoreRequestFilter,
   StoreRequestUpdate,
@@ -47,7 +48,7 @@ export function useStoreService(api: AxiosInstance) {
        * adminShow
        * @param id
        */
-      show: (id: number) => api.get<Store>(`${adminBaseURL}/${id}`),
+      show: (id: number) => api.get<StoreFull>(`${adminBaseURL}/${id}`),
 
       /**
        * adminUpdate

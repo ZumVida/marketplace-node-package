@@ -1,5 +1,7 @@
 import type { PaginationParams } from '../pagination';
-import { User } from '../user';
+import type { User } from '../user';
+import type { Warehouse } from '../warehouse';
+import type { Branch } from './branch';
 
 export interface Store {
   id: number;
@@ -11,6 +13,11 @@ export interface Store {
   summary?: StoreSummary;
   type: StoreType;
   verified_at?: string | null;
+}
+
+export interface StoreFull extends Store {
+  branches: Branch[];
+  warehouses: Warehouse[];
 }
 
 export interface StoreSummary {

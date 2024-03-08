@@ -13,8 +13,15 @@ export interface Branch {
   name: string;
   slug: string;
   store?: Store;
-  summary?: unknown;
+  summary?: BranchSummary;
   verified_at?: string | null;
+}
+
+export interface BranchSummary {
+  inventory?: number;
+  products?: number;
+  sales?: number;
+  views?: number;
 }
 
 export interface BranchRequestFilter extends PaginationParams {

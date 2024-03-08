@@ -112,6 +112,10 @@ async function filterProducts(params: ProductRequestFilter) {
 
 ## Changelog
 
+### v0.2.5
+- Datos completos al obtener tienda
+- Errores corregidos
+
 ### v0.2.4
 - Permisos de usuario
 
